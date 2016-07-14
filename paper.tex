@@ -1,49 +1,9 @@
-% Template for Elsevier CRC journal article
-% version 1.2 dated 09 May 2011
-
-% This file (c) 2009-2011 Elsevier Ltd.  Modifications may be freely made,
-% provided the edited file is saved under a different name
-
-% This file contains modifications for Procedia Engineering
-
-% Changes since version 1.1
-% - added "procedia" option compliant with ecrc.sty version 1.2a
-%   (makes the layout approximately the same as the Word CRC template)
-% - added example for generating copyright line in abstract
-
-%-----------------------------------------------------------------------------------
-
-%% This template uses the elsarticle.cls document class and the extension package ecrc.sty
-%% For full documentation on usage of elsarticle.cls, consult the documentation "elsdoc.pdf"
-%% Further resources available at http://www.elsevier.com/latex
-
-%-----------------------------------------------------------------------------------
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                                                          %%
-%% Important note on usage                                  %%
-%% -----------------------                                  %%
-%% This file should normally be compiled with PDFLaTeX      %%
-%% Using standard LaTeX should work but may produce clashes %%
-%%                                                          %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%% The '3p' and 'times' class options of elsarticle are used for Elsevier CRC
-%% The 'procedia' option causes ecrc to approximate to the Word template
 \documentclass[3p,times,procedia,number]{elsarticle}
 \flushbottom
 
 %% The `ecrc' package must be called to make the CRC functionality available
 \usepackage{ecrc}
 %\usepackage{amsmath}
-
-
-%% The ecrc package defines commands needed for running heads and logos.
-%% For running heads, you can set the journal name, the volume, the starting page and the authors
-
-%% set the volume if you know. Otherwise `00'
 \volume{00}
 
 %% set the starting page if not 1
@@ -53,26 +13,10 @@
 \journalname{Procedia Engineering}
 
 %% Give the author list to appear in the running head
-%% Example \runauth{C.V. Radhakrishnan et al.}
 \runauth{K. Kumar, J.-Y. Delenne and K. Soga}
-
-%% The choice of journal logo is determined by the \jid and \jnltitlelogo commands.
-%% A user-supplied logo with the name <\jid>logo.pdf will be inserted if present.
-%% e.g. if \jid{yspmi} the system will look for a file yspmilogo.pdf
-%% Otherwise the content of \jnltitlelogo will be set between horizontal lines as a default logo
 
 %% Give the abbreviation of the Journal.
 \jid{proeng}
-
-%% Give a short journal name for the dummy logo (if needed)
-%\jnltitlelogo{Procedia Engineering}
-
-%% Hereafter the template follows `elsarticle'.
-%% For more details see the existing template files elsarticle-template-harv.tex and elsarticle-template-num.tex.
-
-%% Elsevier CRC generally uses a numbered reference style
-%% For this, the conventions of elsarticle-template-num.tex should be followed (included below)
-%% If using BibTeX, use the style file elsarticle-num.bst
 
 %% End of ecrc-specific commands
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -85,103 +29,62 @@
 \usepackage[per=slash]{siunitx} % use this package module for SI units
 \usepackage{flexisym}
 \usepackage{subcaption}
-%% The amsthm package provides extended theorem environments
-%% \usepackage{amsthm}
 
-%% The lineno packages adds line numbers. Start line numbering with
-%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
-%% for the whole article with \linenumbers after \end{frontmatter}.
-%% \usepackage{lineno}
-
-%% natbib.sty is loaded by default. However, natbib options can be
-%% provided with \biboptions{...} command. Following options are
-%% valid:
-
-%%   round  -  round parentheses are used (default)
-%%   square -  square brackets are used   [option]
-%%   curly  -  curly braces are used      {option}
-%%   angle  -  angle brackets are used    <option>
-%%   semicolon  -  multiple citations separated by semi-colon
-%%   colon  - same as semicolon, an earlier confusion
-%%   comma  -  separated by comma
-%%   numbers-  selects numerical citations
-%%   super  -  numerical citations as superscripts
-%%   sort   -  sorts multiple citations according to order in ref. list
-%%   sort&compress   -  like sort, but also compresses numerical citations
-%%   compress - compresses without sorting
-%%
-%\biboptions{authoryear}
-
- \biboptions{sort&compress}
+\biboptions{sort&compress}
 
 % if you have landscape tables
 \usepackage[figuresright]{rotating}
-%\usepackage{harvard}
-% put your own definitions here:x
-%   \newcommand{\cZ}{\cal{Z}}
-%   \newtheorem{def}{Definition}[section]
-%   ...
-
-% add words to TeX's hyphenation exception list
-%\hyphenation{author another created financial paper re-commend-ed Post-Script}
-
-% declarations for front matter
 
 \begin{document}
 
 \begin{frontmatter}
 
-%% Title, authors and addresses
-
-%% use the tnoteref command within \title for footnotes;
-%% use the tnotetext command for the associated footnote;
-%% use the fnref command within \author or \address for footnotes;
-%% use the fntext command for the associated footnote;
-%% use the corref command within \author for corresponding author footnotes;
-%% use the cortext command for the associated footnote;
-%% use the ead command for the email address,
-%% and the form \ead[url] for the home page:
-%%
-%% \title{Title\tnoteref{label1}}
-%% \tnotetext[label1]{}
-%% \author{Name\corref{cor1}\fnref{label2}}
-%% \ead{email address}
-%% \ead[url]{home page}
-%% \fntext[label2]{}
-%% \cortext[cor1]{}
-%% \address{Address\fnref{label3}}
-%% \fntext[label3]{}
 
 \dochead{1st International Conference on the Material Point Method, MPM 2017}
-%% Use \dochead if there is an article header, e.g. \dochead{Short communication}
-%% \dochead can also be used to include a conference title, if directed by the editors
-%% e.g. \dochead{17th International Conference on Dynamical Processes in Excited States of Solids}
 
 \title{Transient dynamics of granular piles: continuum v discrete modelling}
-
-%% use optional labels to link authors explicitly to addresses:
-%% \author[label1,label2]{<author name>}
-%% \address[label1]{<address>}
-%% \address[label2]{<address>}
-
-
 
 \author[a]{Krishna Kumar\corref{cor1}}
 \author[a,b]{Kenichi Soga}
 \author[c]{Jean-Yves Delenne}
 
-\address[a]{Department of Engineering, University of Cambridge, Cambridge CB2 1PZ, UK}
-\address[b]{Department of Civil Engineering, University of California, Berkeley, USA}
+\address[a]{Department of Engineering, University of Cambridge, Cambridge CB2
+  1PZ, UK}
+\address[b]{Department of Civil Engineering, University of California,
+  Berkeley, USA}
 \address[c]{University of Montpellier II, France}
 
 \begin{abstract}
-Transient granular flows, such as rock falls, debris flows, and aerial and submarine avalanches, occur very often in nature. In the geotechnical context, transient movements of large granular slopes are a substantial factor of risk due to their destructive force and the transformations they may produce in the landscape. This paper investigates the ability of MPM, a continuum approach, to reproduce the evolution of a granular pile destabilised by an external energy source. In particular, a central issue is whether the power-law dependence of run-out distance and time observed with respect to the initial geometry or energy can be reproduced by a simple Mohr-Coulomb plastic behaviour for granular slopes subjected a horizontal excitation. The effects of different input parameters, such as the distribution of energy and base friction, on the run-out kinematics are studied by comparing the data obtained from DEM and MPM simulations. The mechanism of energy dissipation is primarily through friction and MPM is able to predict the run-out response in good agreement with DEM simulations. At very low energy, DEM simulations show longer run-out in the case of slope subjected to excitations due to local destabilization at the flow front. At low input energy, the gradient velocity distribution shows significantly longer run-out in comparison to uniform velocity distribution. At low input energies a larger fraction of the energy is consumed in the destabilisation process, hence the amount energy available for flow is less in uniform velocity distribution than the gradient velocity profile. However, at higher input energy, where most of the energy is dissipated during the spreading phase, the run-out distance has a weak dependence on the distribution of velocity in the granular mass.
+Transient granular flows, such as rock falls, debris flows, and aerial and
+submarine avalanches, occur very often in nature. In the geotechnical
+context, transient movements of large granular slopes are a substantial
+factor of risk due to their destructive force and the transformations they
+may produce in the landscape. This paper investigates the ability of MPM, a
+continuum approach, to reproduce the evolution of a granular pile
+destabilised by an external energy source. In particular, a central issue is
+whether the power-law dependence of run-out distance and time observed with
+respect to the initial geometry or energy can be reproduced by a simple
+Mohr-Coulomb plastic behaviour for granular slopes subjected a horizontal
+excitation. The effects of different input parameters, such as the
+distribution of energy and base friction, on the run-out kinematics are
+studied by comparing the data obtained from DEM and MPM simulations. The
+mechanism of energy dissipation is primarily through friction and MPM is able
+to predict the run-out response in good agreement with DEM simulations. At
+very low energy, DEM simulations show longer run-out in the case of slope
+subjected to excitations due to local destabilization at the flow front. At
+low input energy, the gradient velocity distribution shows significantly
+longer run-out in comparison to uniform velocity distribution. At low input
+energies a larger fraction of the energy is consumed in the destabilisation
+process, hence the amount energy available for flow is less in uniform
+velocity distribution than the gradient velocity profile. However, at higher
+input energy, where most of the energy is dissipated during the spreading
+phase, the run-out distance has a weak dependence on the distribution of
+velocity in the granular mass.
 \end{abstract}
 
 \begin{keyword}
-MPM; Granuar dynamics; Tranient flows; Continuum; Discrete Element Modelling;
-
-%% keywords here, in the form: keyword \sep keyword
+MPM; Granuar dynamics; Tranient flows; Continuum; 
+Discrete Element Modelling;
 
 %% PACS codes here, in the form: \PACS code \sep code
 
@@ -192,12 +95,9 @@ MPM; Granuar dynamics; Tranient flows; Continuum; Discrete Element Modelling;
 \cortext[cor1]{Corresponding author. Tel.: +44-1223 748589.}
 \end{frontmatter}
 
-%\correspondingauthor[*]{Corresponding author. Tel.: +0-000-000-0000 ; fax: +0-000-000-0000.}
 \email{kks32@cam.ac.uk}
 
-%%
 %% Start line numbering here if you want
-%%
 % \linenumbers
 
 %% main text
@@ -205,71 +105,68 @@ MPM; Granuar dynamics; Tranient flows; Continuum; Discrete Element Modelling;
 %\enlargethispage{-7mm}
 \section{Introduction}
 \label{sec:intro}
-Transient granular flows occur very often in nature. Well-known examples are rockfalls, debris flows,
-and aerial and submarine avalanches. They form a major element of lanscape reshape and their
-high destructive potential is a substantial factor of risk. Natural granular flows may be triggered 
-as a result of different processes such as gradual degradation, induced by weathering or chemical
-reactions, liquefaction and external forces such as earthquakes.          
+Transient granular flows occur very often in nature. Well-known examples are
+rockfalls, debris flows, and aerial and submarine avalanches. They form a major
+element of lanscape reshape and their high destructive potential is a
+substantial factor of risk. Natural granular flows may be triggered as a result
+of different processes such as gradual degradation, induced by weathering or
+chemical reactions, liquefaction and external forces such as earthquakes.          
 
 Granular flows have been studied in laboratory experiments in different 
-geometries such as tilted piles leading to slope failure and surface avalanches 
-\citep{Legros2002, Iverson1997} or by considering vertical columns 
-of grains collapsing and spreading under their own weight \citep{Lajeunesse2004, 
-Lajeunesse2005}. The dynamics observed in the experiments is often nontrivial 
-in the sense that the final configurations after the dissipation of the whole kinetic energy  
-can not be readily predicted by means of simple laws based on the Mohr-Coulomb nature 
-of the material. For example, in collapsing columns, the runout distance 
-is found to obey a power-law dependence upon the initial aspect ratio of the 
-column. 
+geometries such as tilted piles leading to slope failure and surface
+avalanches~\citep{Legros2002, Iverson1997} or by considering vertical columns 
+of grains collapsing and spreading under their own
+weight~\citep{Lajeunesse2004, Lajeunesse2005}. The dynamics observed in the
+experiments is often nontrivial in the sense that the final configurations
+after the dissipation of the whole kinetic energy can not be readily predicted
+by means of simple laws based on the Mohr-Coulomb nature of the material. For
+example, in collapsing columns, the runout distance is found to obey a
+power-law dependence upon the initial aspect ratio of the column. 
 
-The observed nontrivial transient dynamics is often correctly 
-reproduced by the discrete element method (DEM), which provides 
-a powerful tool for the grain-scale analysis of the 
-trigger and its subsequent dynamics \citep{Staron2005, Staron2009}. 
-However, even in simplified geometries such as those 
-investigated in the experiments, the DEM suffers from a serious 
-short-coming in the number of particles that can be simulated in 
-a reasonnable time. This is a critical issue when more complex geometries or 
-long-time granular processes are considered, or when particle size 
-distributions are broad. For this reason, most numerical studies 
-are performed in 2D or simple particles shapes and size distributions 
-are considered. 
+The observed nontrivial transient dynamics is often correctly reproduced by the
+discrete element method (DEM), which provides a powerful tool for the
+grain-scale analysis of the trigger and its subsequent
+dynamics~\citep{Staron2005, Staron2009}. However, even in simplified geometries
+such asthose investigated in the experiments, the DEM suffers from a
+seriousshort-coming in the number of particles that can be simulated in a
+reasonnable time. This is a critical issue when more complex geometries or
+long-time granular processes are considered, or when particle size
+distributions are broad. For this reason, most numerical studies are performed
+in 2D or simple particles shapes and size distributions are considered. 
 
-It is also obvious that classical modeling strategies based on 
-the finite element method (FEM) cannot be used for the 
-simulation of very large deformations. In various application of FEM, 
-this problem is treated by means of technical tools such 
-as remeshing. Such mthods are, however, not robust and lead 
-to round-off errors and mesh-senstitivity. In contrast, the so-called 
-Material Point Method (MPM) is an alternative approach for 
-continuum problems that allows for indefinitely large deformations 
-without remeshing {Reference??}. In this method, the material points carry the information 
-on state variables and a background fixe grid is used to solve the governing equations. 
-The information between the material points and the grid is exchanged via 
-suitable shape functions. The MPM has been applied with success to 
-a number of solid mechanics problems and its theoretical foundations 
-have recently been invesitgated by several authors. 
+It is also obvious that classical modeling strategies based on the finite
+element method (FEM) cannot be used for the simulation of very large
+deformations. In various application of FEM, this problem is treated by means
+of technical tools such as remeshing. Such mthods are, however, not robust and
+lead to round-off errors and mesh-senstitivity. In contrast, the so-called
+Material Point Method (MPM) is an alternative approach for continuum problems
+that allows for indefinitely large deformations without remeshing
+{Reference??}. In this method, the material points carry the information on
+state variables and a background fixe grid is used to solve the governing
+equations. The information between the material points and the grid is
+exchanged via suitable shape functions. The MPM has been applied with success
+to a number of solid mechanics problems and its theoretical foundations have
+recently been invesitgated by several authors. 
 
-In this paper, we are concerned with the ability of the MPM, as a continuum 
-approach, to reproduce the evolution of a granular pile 
-under its own weight or when destabilized by energy input. In particular, 
-a central issue is wheather power-law dependence of the runout distance 
-and timewith respect to the initial geometry or energy can be reproduced 
-by a simple prescription of the Mohr-Coulomb plastic behavior within a  
-MPM code. We therefore perform extensive simulations by varying continuously 
-different input parameters and compare the data with those obtained from 
-DEM simulations of the same system. We compare in detail the evolution of 
-the profile of the pile and its total kinetic energy between the two methods 
-and for differerent initial states. As we shall see, the MPM can successfully simulate  
-the transient evolution with a single input parameter, namely the 
-internal angle of friction. This opens the way to the simulation of 
-geological-scale flows on complex topographies.  
+In this paper, we investigate the ability of the MPM, as a continuum
+approach, to reproduce the evolution of a granular pile under its own weight or
+when destabilized by energy input. In particular, a central issue is wheather
+power-law dependence of the runout distance and timewith respect to the initial
+geometry or energy can be reproduced by a simple prescription of the
+Mohr-Coulomb plastic behavior within a  MPM code. We therefore perform
+extensive simulations by varying continuously different input parameters and
+compare the data with those obtained from DEM simulations of the same system.
+We compare in detail the evolution of the profile of the pile and its total
+kinetic energy between the two methods and for differerent initial states. As
+we shall see, the MPM can successfully simulate  the transient evolution with a
+single input parameter, namely the internal angle of friction. This opens the
+way to the simulation of geological-scale flows on complex topographies.  
   
-In the following, we first briefly introduce the MPM  with a Mohr-Coulomb plastic behaviour.  
-In section 3, we investigate the collapse dynamics and runout of granular columns. 
-We then consider in section 4 the spreading of an initially static pile 
-under the action of an impact energy. We conclude with a summary and 
-discussion of the most salients results of this work.   
+In the following, we first briefly introduce the MPM  with a Mohr-Coulomb
+plastic behaviour. In section 3, we investigate the collapse dynamics and
+runout of granular columns. We then consider in section 4 the spreading of an
+initially static pile under the action of an impact energy. We conclude with a
+summary and discussion of the most salients results of this work.   
 
 \subsection{Numerical set-up}
 \label{sec:num}
@@ -303,96 +200,31 @@ the pile, as in the experiments of collapsing columns. The total run-out
 duration $t_f$ is the time taken by the pile to reach its final run-out 
 distance $L_f$.
 
-For grain-scale simulations, classical DEM and Contact Dynamics approaches were 
-used. This research was done in collaboration with Patrick Mutabaruka, 
-University of Montpellier, who performed Contact Dynamics (CD) simulations that 
-are presented in this section. A detailed description of the Contact Dynamics 
-method can be found in \cite{Moreau1993,Jean1999,Radjai2009,Radjai2011}. 
-The CD method is based on implicit time integration of the equations of motion 
-and a non-smooth formulation of mutual exclusion and dry friction between 
-particles. The CD method requires no elastic repulsive potential and no 
-smoothing of the Coulomb friction law for the determination of forces. 
-For this reason, the simulations can be performed with large time steps 
-compared to discrete element simulations. The unknown variables are particle 
-velocities and contact forces, which are calculated at each time step by taking 
-into account the conservation of momenta and the constraints due to mutual 
-exclusion between particles and the Coulomb friction. An iterative 
-algorithm based on a non-linear Gauss-Seidel scheme is used. The only 
-contact parameters within the CD method are the friction coefficient $\mu$, the 
-normal restitution coefficient $\varepsilon_n$ and the tangential restitution 
-coefficient $\varepsilon_t$ between grains. 
+For grain-scale simulations, classical DEM approach was used. 
 
 In MPM simulations, the material point spacing is adopted to be the same as the 
 mean grain diameter in DEM. A mesh size of 0.0125m is adopted with 25 material 
 points per cell. The effect of mesh size and the number of material points per 
-cell is investigated in~\cref{sec:MPM_points_per_cell}. The initial 
-configuration of the slope in MPM is shown in~\cref{fig:MPM_Initial_PIC_Slope}. 
+cell was investigated by~\citep{soundararajan2015}. The initial 
+configuration of the slope in MPM is shown in~\cref{fig:mpm_slope_setup}. 
 Frictional boundary conditions are applied on the left and the bottom 
-boundaries by applying constraints to the nodal acceleration. The initial 
-vertical stress of the granular pile in equilibrium, before the horizontal 
-excitation, in the MPM simulation is shown in~\cref{fig:MPM_Stress_Slope}. The 
-distribution of the initial gradient horizontal excitation energy of 50~\si{J} 
-on the granular pile is shown in~\cref{fig:MPM_Velocity_Slope}. The 
-Mohr-Coulomb model with no dilation is used to simulate the continuum behaviour 
-of the granular pile. Periodic shear tests using CD 
-(\cref{fig:Sxy_vs_Syy_Slope}), reveals a macroscopic friction coefficient of 
-0.22. The evolution of inertial number with friction is presented 
-in~\cref{fig:mu_vs_I}. 
+boundaries by applying constraints to the nodal acceleration. Mohr-Coulomb
+model with no dilation is used to simulate the continuum behaviour of the
+granular pile. Periodic shear tests in DEM reveals a macroscopic friction 
+coefficient of 0.22.
 
 \begin{figure}[tbhp]
   \centering
-  \begin{subfigure}[t]{0.75\textwidth}
-    \centering
-    \includegraphics[width=0.95\textwidth]{figs/MPM_Initial_PIC_Slope}
-    \caption{Initial configuration of material points per cell. 25 material points 
-    per cell. Cell size of 0.0125m.}
-    \label{fig:MPM_Initial_PIC_Slope}
-  \end{subfigure} \\
-  %
-  \begin{subfigure}[t]{0.95\textwidth}
-    \centering
-    \includegraphics[width=0.95\textwidth]{figs/MPM_Stress_Slope}
-    \caption{Initial stress in MPM}
-    \label{fig:MPM_Stress_Slope}
-  \end{subfigure} \\
-  %
-  \begin{subfigure}[t]{0.95\textwidth}
-    \centering
-    \includegraphics[width=0.95\textwidth]{figs/MPM_Velocity_Slope}
-    \caption{Initial horizontal velocity for a pile subjected to a horizontal 
-    velocity of 50J.}
-    \label{fig:MPM_Velocity_Slope}
-  \end{subfigure}
+  \includegraphics[width=0.95\textwidth]{figs/mpm_velocity_slope}
   \caption{Initial configuration for the MPM simulation of a pile subjected to 
-  horizontal velocities.}
-  \label{fig:MPM_Slope_setup}
+  horizontal velocity of 50J.}
+  \label{fig:mpm_slope_setup}
 \end{figure}
 
-
-\begin{figure}[tbhp]
-  \centering
-  \begin{subfigure}[t]{0.475\textwidth}
-    \includegraphics[width=0.95\textwidth]{figs/Sxy_vs_Syy_Slope}
-    \caption{Evaluation of the critical state friction angle.}
-    \label{fig:Sxy_vs_Syy_Slope}
-  \end{subfigure}
-  %
-  \begin{subfigure}[t]{0.475\textwidth}
-    \includegraphics[width=0.95\textwidth]{figs/mu_vs_I}
-    \caption{Evolution of Inertial number with friction $\mu$.}
-    \label{fig:mu_vs_I}
-  \end{subfigure}
-  \caption{Periodic shear test using CD~\citep{Mutabaruka2013}.}
-  \label{fig:Shear_Test_Slope}
-\end{figure}
-
-The natural units of the system 
-are the mean grain diameter $d$, the mean grain 
+The natural units of the system are the mean grain diameter $d$, the mean grain 
 mass $m$ and acceleration due to gravity $g$. For this reason, the length 
 scales are normalised by $d$, time by $(d/g)^{1/2}$, velocities by $(gd)^{1/2}$ 
 and energies by $mgd$. 
-
-
 
 %-------------------------------------------------------------------------------
 \subsection{Evolution of pile geometry and run-out}
