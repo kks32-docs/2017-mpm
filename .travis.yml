@@ -10,3 +10,5 @@ install:
    - sudo apt-get install -y psutils
 script:
    - latexmk -pdf paper.tex
+notifications:
+  slack: kks32:vsrIj5wVAmBbEQDpldE2GxcH
