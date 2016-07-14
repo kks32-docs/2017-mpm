@@ -180,15 +180,27 @@ to allow the grains to spread. A stable granular slope of 13.2~\si{\degree} is
 obtained when all grains come to rest; see~\cref{fig:slope_configuration}. This 
 procedure leads to a mean packing fraction $\simeq 0.82$. Soil grains with a 
 mean density of 2600~\si{\kg\per\m\cubed} and internal friction coefficient of 
-0.4 between grains are considered.
+0.4 between grains are considered. For grain-scale simulations, classical DEM
+approach was used. 
 
 \begin{figure}[tbhp]
-  \includegraphics[width=0.95\textwidth]{figs/slope_configuration}
+  \centering
+  \begin{subfigure}[b]{0.47\textwidth}
+    \centering
+    \includegraphics[width=0.95\textwidth]{figs/slope_configuration}
+    \caption{DEM}
+    \label{fig:dem_slope_configuration}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.47\textwidth}
+    \centering
+    \includegraphics[width=0.95\textwidth]{figs/mpm_velocity_slope}
+    \caption{MPM}
+    \label{fig:mpm_slope_setup}
+  \end{subfigure}
   \caption{Initial geometry and dimensions of the pile subjected to a horizontal 
-  excitation.}
+    velocity of 50J.}
   \label{fig:slope_configuration}
 \end{figure}
-
 
 The initial static pile was set into motion by applying a horizontal
 gradient velocity $v_{0x}(y) = k (y_{max} - y)$ with $k>0$. The evolution of 
@@ -200,26 +212,15 @@ the pile, as in the experiments of collapsing columns. The total run-out
 duration $t_f$ is the time taken by the pile to reach its final run-out 
 distance $L_f$.
 
-For grain-scale simulations, classical DEM approach was used. 
-
 In MPM simulations, the material point spacing is adopted to be the same as the 
 mean grain diameter in DEM. A mesh size of 0.0125m is adopted with 25 material 
 points per cell. The effect of mesh size and the number of material points per 
-cell was investigated by~\citep{soundararajan2015}. The initial 
-configuration of the slope in MPM is shown in~\cref{fig:mpm_slope_setup}. 
-Frictional boundary conditions are applied on the left and the bottom 
-boundaries by applying constraints to the nodal acceleration. Mohr-Coulomb
-model with no dilation is used to simulate the continuum behaviour of the
-granular pile. Periodic shear tests in DEM reveals a macroscopic friction 
-coefficient of 0.22.
-
-\begin{figure}[tbhp]
-  \centering
-  \includegraphics[width=0.95\textwidth]{figs/mpm_velocity_slope}
-  \caption{Initial configuration for the MPM simulation of a pile subjected to 
-  horizontal velocity of 50J.}
-  \label{fig:mpm_slope_setup}
-\end{figure}
+cell was investigated by~\citep{soundararajan2015}. The initial configuration
+of the slope in MPM is shown in~\cref{fig:mpm_slope_setup}. Frictional boundary
+conditions are applied on the left and the bottom boundaries by applying
+constraints to the nodal acceleration. Mohr-Coulomb model with no dilation is
+used to simulate the continuum behaviour of the granular pile. Periodic shear
+tests in DEM reveals a macroscopic friction coefficient of 0.22.
 
 The natural units of the system are the mean grain diameter $d$, the mean grain 
 mass $m$ and acceleration due to gravity $g$. For this reason, the length 
@@ -230,7 +231,7 @@ and energies by $mgd$.
 \subsection{Evolution of pile geometry and run-out}
 \label{sec:evolution}
 
-\Cref{fig:Gradient_Slope_Profile_200J} shows the initial evolution of the 
+\Cref{fig:mpm_gradvelocity_200j} shows the initial evolution of the 
 granular slope subjected to an initial horizontal energy $E_0 = 61$ (in 
 dimensionless units) using MPM. As the granular slope is sheared along the 
 bottom, the shear propagates to the top leaving a cavity in the vicinity of the 
@@ -243,19 +244,23 @@ spread.
 
 \begin{figure}[tbph]
   \centering
-  \includegraphics[width=\textwidth]{figs/Gradient_Slope_Profile_200J}
-  \caption{MPM simulation of the initial stages of granular pile subjected to a 
-  gradient horizontal energy.}
-  \label{fig:Gradient_Slope_Profile_200J}
+  \begin{subfigure}[b]{0.47\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figs/mpm_gradvelocity_200j}
+    \caption{MPM simulation of the initial stages of granular pile subjected to a 
+    gradient horizontal energy.}
+    \label{fig:mpm_gradvelocity_200j}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.47\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figs/Gradient_Slope_CD_200J}
+    \caption{CD simulation of the initial stages of granular pile subjected to a 
+    gradient horizontal energy.~\citep{Mutabaruka2013}.}
+    \label{fig:Gradient_Slope_CD_200J}
+  \end{subfigure}
+  \label{fig:gradvelocity_200j}
 \end{figure}
 
-\begin{figure}
-  \centering
-  \includegraphics[width=\textwidth]{figs/Gradient_Slope_CD_200J}
-  \caption{CD simulation of the initial stages of granular pile subjected to a 
-  gradient horizontal energy.~\citep{Mutabaruka2013}.}
-  \label{fig:Gradient_Slope_CD_200J}
-\end{figure}
 
 The flow involves a transient phase with a change in the geometry of the pile 
 followed by continuous spreading. The gradient of input energy applied to the 
@@ -293,14 +298,13 @@ declines when the input energy is increased.
 
 \begin{figure}[tbph]
   \centering
-  \begin{subfigure}[b]{0.9\textwidth}
+  \begin{subfigure}[b]{0.49\textwidth}
     \centering
     \includegraphics[width=\textwidth]{figs/Runout_Eo_MPM_CD_DEM}
     \caption{Run-out distance as a function of normalised input kinetic energy.}
     \label{fig:Runout_Eo_MPM_CD_DEM}
   \end{subfigure}
-  \\
-  \begin{subfigure}[b]{0.9\textwidth}
+  \begin{subfigure}[b]{0.49\textwidth}
     \centering
     \includegraphics[width=\textwidth]{figs/Tf_vs_Eo_Slope}
     \caption{Duration of run-out as a function of normalised input kinetic energy.}
@@ -374,13 +378,12 @@ densifies as the flow progresses, after the initial dilation phase for $t =
 
 \begin{figure}[tbhp]
   \centering
-  \begin{subfigure}[b]{0.9\textwidth}
+  \begin{subfigure}[b]{0.49\textwidth}
     \includegraphics[width=\textwidth]{figs/Energy_Slope}
     \caption{Evolution of total kinetic energy with time.}
     \label{fig:energy_slope}
   \end{subfigure}
-  \\
-  \begin{subfigure}[b]{0.9\textwidth}
+  \begin{subfigure}[b]{0.49\textwidth}
     \centering
     \includegraphics[width=\textwidth]{figs/Normalised_Energy_Time_Slope}
     \caption{Evolution of normalised kinetic energy with normalised time.}
@@ -428,13 +431,12 @@ spreading stage is negligible.
 
 \begin{figure}[tbhp]
   \centering
-  \begin{subfigure}[b]{0.9\textwidth}
+  \begin{subfigure}[b]{0.49\textwidth}
     \includegraphics[width=\textwidth]{figs/Normalised_KEx_Slope}
     \caption{Evolution of normalised horizontal kinetic energy with time.}
     \label{fig:Normalised_KEx_Slope}
   \end{subfigure}
-  \\
-  \begin{subfigure}[b]{0.9\textwidth}
+  \begin{subfigure}[b]{0.49\textwidth}
     \centering
     \includegraphics[width=\textwidth]{figs/Normalised_KEy_Slope}
     \caption{Evolution of normalised vertical kinetic energy with time.}
@@ -513,14 +515,13 @@ here.
 
 \begin{figure}[tbhp]
   \centering
-  \begin{subfigure}[b]{0.92\textwidth}
+  \begin{subfigure}[b]{0.49\textwidth}
     \includegraphics[width=\textwidth]{figs/tp_tau_mgd}
     \caption{Power law evolution of $t'_f$ and $\tau$ as a function of kinetic 
     energy $E'_{kx0}$.}
     \label{fig:tp_tau_mgd}
   \end{subfigure}
-  \\
-  \begin{subfigure}[b]{0.92\textwidth}
+  \begin{subfigure}[b]{0.49\textwidth}
     \centering
     \includegraphics[width=\textwidth]{figs/tp_tau}
     \caption{Linear relationship between decay time and run-out time after the 
@@ -575,14 +576,13 @@ friction coefficient~\citep{Estrada2008}.
 
 \begin{figure}[tbhp]
   \centering
-  \begin{subfigure}[b]{0.9\textwidth}
+  \begin{subfigure}[b]{0.49\textwidth}
     \centering
     \includegraphics[width=\textwidth]{figs/runout_fric_slope}
     \caption{Effect of friction on the run-out distance}
     \label{fig:runout_fric_slope}
   \end{subfigure}
-  \\
-  \begin{subfigure}[b]{0.9\textwidth}
+  \begin{subfigure}[b]{0.49\textwidth}
     \centering
     \includegraphics[width=\textwidth]{figs/time_fric_slope}
     \caption{Effect of friction on the duration of run-out.}
