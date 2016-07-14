@@ -42,7 +42,7 @@
 
 \dochead{1st International Conference on the Material Point Method, MPM 2017}
 
-\title{Transient dynamics of granular slopes: continuum v discrete modelling}
+\title{Transient dynamics of granular slopes: MPM v DEM}
 
 \author[a]{Krishna Kumar\corref{cor1}}
 \author[a,b]{Kenichi Soga}
@@ -60,26 +60,21 @@ submarine avalanches, occur very often in nature. In the geotechnical
 context, transient movements of large granular slopes are a substantial
 factor of risk due to their destructive force and the transformations they
 may produce in the landscape. This paper investigates the ability of MPM, a
-continuum approach, to reproduce the evolution of a granular pile
+continuum approach, to reproduce the evolution of a granular slope
 destabilised by an external energy source. In particular, a central issue is
 whether the power-law dependence of run-out distance and time observed with
 respect to the initial geometry or energy can be reproduced by a simple
-Mohr-Coulomb plastic behaviour for granular slopes subjected a horizontal
-excitation. The effects of different input parameters, such as the
-distribution of energy and base friction, on the run-out kinematics are
-studied by comparing the data obtained from DEM and MPM simulations. The
-mechanism of energy dissipation is primarily through friction and MPM is able
-to predict the run-out response in good agreement with DEM simulations. At
-very low energy, DEM simulations show longer run-out in the case of slope
-subjected to excitations due to local destabilization at the flow front. At
-low input energy, the gradient velocity distribution shows significantly
-longer run-out in comparison to uniform velocity distribution. At low input
-energies a larger fraction of the energy is consumed in the destabilisation
-process, hence the amount energy available for flow is less in uniform
-velocity distribution than the gradient velocity profile. However, at higher
-input energy, where most of the energy is dissipated during the spreading
-phase, the run-out distance has a weak dependence on the distribution of
-velocity in the granular mass.
+Mohr-Coulomb plastic behaviour. The effect of base 
+friction on the run-out kinematics is studied by comparing the data obtained
+from the DEM and MPM simulations. The mechanism of energy dissipation is
+primarily through friction and the MPM is able to predict the run-out response in
+good agreement with the DEM simulations. At very low excitation energies, 
+the DEM simulations show longer run-out in comparison to the MPM due to local
+destabilization at the flow front. At low input energies, a larger fraction of
+the energy is consumed in the destabilisation process, hence the amount energy
+available for flow is less. However, at higher input energy, where most of
+the energy is dissipated during the spreading phase, the run-out distance 
+has a weak dependence on the distribution of velocity in the granular mass.
 \end{abstract}
 
 \begin{keyword}
@@ -107,28 +102,28 @@ Discrete Element Modelling;
 \label{sec:intro}
 Transient granular flows occur very often in nature. Well-known examples are
 rockfalls, debris flows, and aerial and submarine avalanches. They form a major
-element of lanscape reshape and their high destructive potential is a
+element of reshaping the lanscape and their high destructive potential is a
 substantial factor of risk. Natural granular flows may be triggered as a result
 of different processes such as gradual degradation, induced by weathering or
 chemical reactions, liquefaction and external forces such as earthquakes.          
 
 Granular flows have been studied in laboratory experiments in different 
-geometries such as tilted piles leading to slope failure and surface
+geometries such as tilted slopes leading to slope failure and surface
 avalanches~\citep{Mutabaruka2015,Legros2002, Iverson1997} or by considering
 vertical columns of grains collapsing and spreading under their
 ownweight~\citep{Lajeunesse2004, Lajeunesse2005}. The dynamics observed in
-theexperiments is often nontrivial in the sense that the final configurations
+the experiments is often nontrivial in the sense that the final configurations
 after the dissipation of the whole kinetic energy can not be readily predicted
 by means of simple laws based on the Mohr-Coulomb nature of the material. For
 example, in collapsing columns, the runout distance is found to obey a
-power-law dependence upon the initial aspect ratio of the column. 
+power-law dependence with the initial aspect ratio of the column. 
 
 The observed nontrivial transient dynamics is often correctly reproduced by the
 discrete element method (DEM), which provides a powerful tool for the
 grain-scale analysis of the trigger and its subsequent
 dynamics~\citep{Staron2005, Staron2009}. However, even in simplified geometries
-such asthose investigated in the experiments, the DEM suffers from a
-seriousshort-coming in the number of particles that can be simulated in a
+such as those investigated in the experiments, the DEM suffers from a
+serious short-coming in the number of particles that can be simulated in a
 reasonnable time. This is a critical issue when more complex geometries or
 long-time granular processes are considered, or when particle size
 distributions are broad. For this reason, most numerical studies are performed
@@ -137,36 +132,31 @@ in 2D or simple particles shapes and size distributions are considered.
 It is also obvious that classical modeling strategies based on the finite
 element method (FEM) cannot be used for the simulation of very large
 deformations. In various application of FEM, this problem is treated by means
-of technical tools such as remeshing. Such mthods are, however, not robust and
-lead to round-off errors and mesh-senstitivity. In contrast, the so-called
+of technical tools such as remeshing. Such methods are, however, not robust and
+lead to round-off errors and mesh-senstitivity. In contrast, the 
 Material Point Method (MPM) is an alternative approach for continuum problems
-that allows for indefinitely large deformations without remeshing
-{Reference??}. In this method, the material points carry the information on
-state variables and a background fixe grid is used to solve the governing
-equations. The information between the material points and the grid is
-exchanged via suitable shape functions. The MPM has been applied with success
-to a number of solid mechanics problems and its theoretical foundations have
-recently been invesitgated by several authors. 
+that allows for indefinitely large deformations without 
+remeshing~\citep{Soga2016, Bandara2014, Bardenhagen2000, Sulsky1995}. In this
+method, the material points carry the information on state variables and a
+background fixed grid is used to solve the governing equations. The information 
+between the material points and the grid is exchanged via suitable shape
+functions. The MPM has been applied with success to a number of solid mechanics
+problems and its theoretical foundations have recently been invesitgated by
+several authors. 
 
 In this paper, we investigate the ability of the MPM, as a continuum
-approach, to reproduce the evolution of a granular pile under its own weight or
+approach, to reproduce the evolution of a granular slope
 when destabilized by energy input. In particular, a central issue is wheather
 power-law dependence of the runout distance and timewith respect to the initial
 geometry or energy can be reproduced by a simple prescription of the
 Mohr-Coulomb plastic behavior within a  MPM code. We therefore perform
 extensive simulations by varying continuously different input parameters and
 compare the data with those obtained from DEM simulations of the same system.
-We compare in detail the evolution of the profile of the pile and its total
+We compare in detail the evolution of the profile of the slope and its total
 kinetic energy between the two methods and for differerent initial states. As
 we shall see, the MPM can successfully simulate  the transient evolution with a
 single input parameter, namely the internal angle of friction. This opens the
-way to the simulation of geological-scale flows on complex topographies.  
-  
-In the following, we first briefly introduce the MPM  with a Mohr-Coulomb
-plastic behaviour. In section 3, we investigate the collapse dynamics and
-runout of granular columns. We then consider in section 4 the spreading of an
-initially static pile under the action of an impact energy. We conclude with a
-summary and discussion of the most salients results of this work.   
+way to the simulation of geological-scale flows on complex topographies. 
 
 \subsection{Numerical set-up}
 \label{sec:num}
@@ -177,11 +167,12 @@ diameter and mass are $d\simeq 2.455 $~\si{\mm} and $m\simeq 0.0123$~\si{\kg},
 respectively. The grains are first poured uniformly into a rectangular box of 
 given width and then the right-hand side wall is shifted far to the right 
 to allow the grains to spread. A stable granular slope of 13.2~\si{\degree} is 
-obtained when all grains come to rest; see~\cref{fig:slope_configuration}. This 
+obtained when all grains come to rest. The initial slope configuration is shown
+in~\cref{fig:slope_configuration}. This 
 procedure leads to a mean packing fraction $\simeq 0.82$. Soil grains with a 
 mean density of 2600~\si{\kg\per\m\cubed} and internal friction coefficient of 
 0.4 between grains are considered. For grain-scale simulations, classical DEM
-approach was used. 
+approach was used~\citep{Cundall1979a}. 
 
 \begin{figure}[tbhp]
   \centering
@@ -197,30 +188,35 @@ approach was used.
     \caption{MPM}
     \label{fig:mpm_slope_setup}
   \end{subfigure}
-  \caption{Initial geometry and dimensions of the pile subjected to a horizontal 
+  \caption{Initial geometry and dimensions of the slope subjected to a horizontal 
     velocity of 50J.}
   \label{fig:slope_configuration}
 \end{figure}
 
-The initial static pile was set into motion by applying a horizontal
-gradient velocity $v_{0x}(y) = k (y_{max} - y)$ with $k>0$. The evolution of 
-the pile geometry and the total kinetic energy as a function of the initial 
-input energy $E_0$ is studied. The run-out distance $L_f$ is the distance of 
-the rightmost grain, which is still in contact with the main mass when the pile 
-comes to rest. The run-out will be normalised by the initial length $L_0$ of 
-the pile, as in the experiments of collapsing columns. The total run-out 
-duration $t_f$ is the time taken by the pile to reach its final run-out 
-distance $L_f$.
 
+In the present study, Generalised Interpolation Material Point Method 
+is used to avoid cell crossing noise~\citep{Steffen2008, Bardenhagen2004}.
 In MPM simulations, the material point spacing is adopted to be the same as the 
 mean grain diameter in DEM. A mesh size of 0.0125m is adopted with 25 material 
 points per cell. The effect of mesh size and the number of material points per 
-cell was investigated by~\citep{Soundararajan2015}. The initial configuration
-of the slope in MPM is shown in~\cref{fig:mpm_slope_setup}. Frictional boundary
-conditions are applied on the left and the bottom boundaries by applying
-constraints to the nodal acceleration. Mohr-Coulomb model with no dilation is
-used to simulate the continuum behaviour of the granular pile. Periodic shear
-tests in DEM reveals a macroscopic friction coefficient of 0.22.
+cell was investigated by~\citet{Soundararajan2015}. The initial configuration
+of the slope used in the MPM simulations is shown in~\cref{fig:mpm_slope_setup}.
+Frictional boundary conditions are applied on the left and the bottom boundaries
+by applying constraints to the nodal acceleration. Mohr-Coulomb model with no
+dilation is used to simulate the continuum behaviour of the granular slope.
+Periodic shear tests in DEM reveals a macroscopic friction coefficient of 0.22.
+Further details about DEM and MPM parameters and set-up can be found in
+~\citet{Soundararajan2015}.
+
+The initial static slope was set into motion by applying a horizontal
+gradient velocity $v_{0x}(y) = k (y_{max} - y)$ with $k>0$. The evolution of 
+the slope geometry and the total kinetic energy as a function of the initial 
+input energy $E_0$ is studied. The run-out distance $L_f$ is the distance of 
+the rightmost grain, which is still in contact with the main mass when the slope 
+comes to rest. The run-out will be normalised by the initial length $L_0$ of 
+the slope, as in the experiments of collapsing columns. The total run-out 
+duration $t_f$ is the time taken by the slope to reach its final run-out 
+distance $L_f$.
 
 The natural units of the system are the mean grain diameter $d$, the mean grain 
 mass $m$ and acceleration due to gravity $g$. For this reason, the length 
@@ -228,7 +224,7 @@ scales are normalised by $d$, time by $(d/g)^{1/2}$, velocities by $(gd)^{1/2}$
 and energies by $mgd$. 
 
 %-------------------------------------------------------------------------------
-\subsection{Evolution of pile geometry and run-out}
+\subsection{Evolution of slope geometry and run-out}
 \label{sec:evolution}
 
 \Cref{fig:mpm_gradvelocity_200j} shows the initial evolution of the 
@@ -239,7 +235,7 @@ left wall. This cavity gets partially filled as the granular mass at the top
 collapse behind the flowing mass due to inertia. Similar behaviour is observed 
 during the initial stages of the flow evolution using DEM  
 (\cref{fig:dem_gradvelocity_200j}). Due to inertia, the grains at the top 
-of the granular heap roll down to fill the cavity, while the pile continues to 
+of the granular heap roll down to fill the cavity, while the slope continues to 
 spread. 
 
 \begin{figure}[tbph]
@@ -256,13 +252,13 @@ spread.
     \caption{DEM}
     \label{fig:dem_gradvelocity_200j}
   \end{subfigure}
-  \caption{Evolution of granular piles subjected to a gradient
-    horizontal energy of 200J.}
+  \caption{Evolution of granular slopes subjected to a gradient
+    horizontal energy $E_0/(mgd)$ of 61.}
   \label{fig:gradvelocity_200j}
 \end{figure}
 
 
-The flow involves a transient phase with a change in the geometry of the pile 
+The flow involves a transient phase with a change in the geometry of the slope 
 followed by continuous spreading. The gradient of input energy applied to the 
 granular slope mimics a horizontal quake. Despite the creation of a cavity
 behind the flowing mass, the granular heap remains in contact with the left
@@ -272,7 +268,7 @@ function of the input energy $E_0$. Two regimes characterised by a power-law
 relation between the run-out distance and time as a function of $E_0$ can be
 observed. In the first regime, corresponding to the range of low input energies
 $E_0 < 40 \ mgd$, the run-out distance observed varies as $L_f \propto
-(E_0)^\alpha$ with $\alpha \simeq 0.206 \pm 0.012$ over nearly one decade.
+(E_0)^\alpha$ with $\alpha \simeq 0.206 \pm 0.012$ over nearly one log cycle.
 Overall, the run-out distance predicted by the continuum approach matches the
 DEM simulations. At very low energies, DEM simulations show longer run-out
 distance due to local fluidisation.
@@ -282,7 +278,7 @@ While the run-out exhibits a power-law relation with the initial input energy,
 the DEM simulations show that the flow duration remains constant at a value  
 $t_f \simeq 60 \  (d/g)^{0.5}$ irrespective of the value of $E_0$. The constant 
 run-out time, in grain-scale simulations, indicates the collapse of grain into 
-the cavity left behind the pile. An average run-out speed can be defined as 
+the cavity left behind the slope. An average run-out speed can be defined as 
 $v_s = (L_f - L_0) / t_f$. According to the data, $v_s \propto 
 (E_0)^{0.52\pm 0.012}$. The error on the exponent represents the error due to
 the linear fit on the logarithmic scale. Since the initial average velocity
@@ -296,29 +292,29 @@ input energy is increased.
   \begin{subfigure}[b]{0.49\textwidth}
     \centering
     \includegraphics[width=\textwidth]{figs/runout_eo_mpm_dem}
-    \caption{Run-out distance as a function of normalised input kinetic energy.}
+    \caption{Run-out as a function of $KE_0$.}
     \label{fig:runout_eo_mpm_dem}
   \end{subfigure}
   \begin{subfigure}[b]{0.49\textwidth}
     \centering
     \includegraphics[width=\textwidth]{figs/Tf_vs_Eo_Slope}
-    \caption{Duration of run-out as a function of normalised input kinetic energy.}
+    \caption{Duration of run-out as a function of $KE_0$.}
     \label{fig:Tf_vs_Eo_Slope}
   \end{subfigure}
   \caption{Evolution of run-out and time as a function of the normalised input 
-  energy for a pile subjected a gradient horizontal energy.}
+  energy for a slope subjected a gradient horizontal energy.}
   \label{fig:Slope}
 \end{figure}
 
 In the second regime, corresponding to the range of high input energies  $E_0 > 
 40 \ mgd$, the run-out distance varies as $L_f \propto (E_0)^{\alpha'}$ over 
-one decade with $\alpha' \simeq 0.56\pm 0.04$ while the duration increases as 
+one cycle with $\alpha' \simeq 0.56\pm 0.04$ while the duration increases as 
 $t_f \propto (E_0)^{\beta'}$ with $\beta' \simeq 0.33 \pm 0.02$. Hence, in this 
 regime the average run-out speed varies as $v_s \propto (E_0)^{0.498 \pm 
 0.01}$. This exponent is close to the value $0.5$ in $v_0 \propto (E_0)^{0.5}$, 
 and hence, within the confidence interval of the exponents.
 In the second regime, both DEM and MPM predict almost the same run-out 
-behaviour. However, MPM predicts longer duration with increase in the input 
+behaviour. However, the MPM predicts longer duration with increase in the input 
 energy.
 
 It is worth noting that a similar power-law dependence of the run-out distance 
@@ -339,15 +335,15 @@ distance.
 \subsection{Decay of kinetic energy}
 \label{sec:decay}
 
-The non-trivial evolution of the pile geometry in two regimes suggests that 
-the energy supplied to the pile is not simply dissipated by shear and friction 
+The non-trivial evolution of the slope geometry in two regimes suggests that 
+the energy supplied to the slope is not simply dissipated by shear and friction 
 along the bottom plane. It is important to split the kinetic energy into 
 vertical and horizontal components ($K_{Ex}$ and $K_{Ey}$) of the velocity 
 field. Although, the input energy is in the $x$ component, a fraction of 
 the energy is transferred to the vertical component of the velocity field and 
 dissipated during the transient phase. The evolution of kinetic energy is 
 studied to understand the behaviour of granular flow that is consistent with 
-the evolution of the pile shape.
+the evolution of the slope shape.
 
 The evolution of total kinetic energies $E_k$ with time for different values of 
 the input energy $E_{ki}$ based on MPM simulations are shown 
@@ -357,7 +353,7 @@ in~\cref{fig:Normalised_Energy_Time_Slope_MPM}. However, the DEM simulations
 (\cref{fig:Normalised_Energy_Time_Slope_DEM}) show that the energy evolution 
 corresponding to the low energy regime nearly collapse on to a single time 
 evolution. This is consistent with the observation of run-out time $t_f$ being 
-independent of the input energy. In contrast, MPM simulations predict a power 
+almost independent of the input energy. In contrast, MPM simulations predict a power 
 law relation between the run-out duration and input energy. However, the 
 plots corresponding to the high energy regime (\cref{fig:Energy_Time_Slope}), 
 collapse only at the beginning of the run-out i.e. for $t < t_1 \simeq 7.5 \ 
@@ -383,7 +379,7 @@ progresses, after the initial dilation phase for $t = 20\sqrt{d/g}$.
     \label{fig:Normalised_Energy_Time_Slope_DEM}
   \end{subfigure}
   \caption{Evolution of normalised kinetic energy with normalised time for a
-  pile subjected to gradient input velocities.}
+  slope subjected to gradient input velocities.}
   \label{fig:Energy_Time_Slope}
 \end{figure}
 
@@ -393,15 +389,15 @@ to the total energy dissipation, but $E_y$ increases and passes through a peak
 before decaying rapidly to a negligible level. The transient is best 
 observed for $E_y$, which has significant values only for $t< t_1$. This energy 
 represents the proportion of kinetic energy transferred to the $y$ component of 
-the velocity field  due to the destabilisation of the pile and collapse of 
-grains in the cavity behind the pile. Higher proportion of vertical 
+the velocity field  due to the destabilisation of the slope and collapse of 
+grains in the cavity behind the slope. Higher proportion of vertical 
 acceleration $E_{ky}/E_0$ is observed for lower values of input energy $E_0$. 
 This means that, at lower input energies a larger fraction of the energy is 
 consumed in the destabilisation process. Whereas at a higher input energies, 
 most of the energy is dissipated in the spreading phase. For this reason, the 
 total duration $t_1$ of this destabilisation phase is nearly the same in 
 both regimes and its value is controlled by gravity rather than the input 
-energy. The height of the pile being of the order of $80 \ d$, the total 
+energy. The height of the slope being of the order of $80 \ d$, the total 
 free-fall time for a particle located at this height is $\simeq 12 \ 
 (d/g)^{0.5}$, which is of the same order as $t_1$. DEM simulations show that 
 the contribution of the rotational energy during the transient stage and the 
@@ -421,7 +417,7 @@ spreading stage is negligible.
     \label{fig:Normalised_KEy_Slope}
   \end{subfigure}
   \caption{Evolution of vertical and horizontal kinetic energy with time (MPM) 
-  for a pile subjected to gradient input velocities.}
+  for a slope subjected to gradient input velocities.}
   \label{fig:Normalised_KEx_KEy_Slope}
 \end{figure}
 
@@ -433,7 +429,7 @@ required for $E_{kx}$ to decline by afactor $1/2$.~\Cref{fig:ExEx0_vs_ttau}
 shows the same data in which the time $t'$ elapsed since $t_1$, normalised by
 $\tau$. Interestingly, now all the data nicely collapse on to a single curve.
 However, this curve can not be fitted by simple functional forms such as
-variants of exponential decay. This means that the spreading of the pile is not
+variants of exponential decay. This means that the spreading of the slope is not
 a self-similar process in agreement with the fact that the energy fades away in
 a finite time $t'_f$. 
 
@@ -467,7 +463,7 @@ the run-out time is a multiple of the decay time and the spreading process is
 controlled by a single time. A weak dependence on the energy $E'_{kx0}$ is 
 consistent with the fact that the energy available at the beginning of the 
 second phase is not dissipated in the spreading process (calculated from the 
-position of the tip of the pile) since the pile keeps deforming by the 
+position of the tip of the slope) since the slope keeps deforming by the 
 movements of the grains at the free surface even when the tip comes to rest. 
 This can explain the small difference between the two exponents as observed 
 here.
@@ -499,7 +495,7 @@ here.
 \label{sec:parameters}
 
 The run-out distance, duration of flow, and the dissipation of kinetic energy 
-are controlled by the input energy and collective dynamics of the whole pile. 
+are controlled by the input energy and collective dynamics of the whole slope. 
 However, the run-out behaviour is also expected to depend on the base friction. 
 A series of simulations with different values of base friction was performed 
 using MPM to analyse the influence of friction on the run-out behaviour. The 
@@ -513,7 +509,7 @@ granular column collapse with varying initial
 properties~\citep{Balmforth2005,Lajeunesse2005}. 
 
 The effect of friction coefficient is quite important for the run-out. MPM
-simulations with varying friction coefficient show that, both the run-out
+simulations with varying friction coefficient show that both the run-out
 distance and the decay time decrease as the friction coefficient is increased.
 This effect is much more pronounced at low values of the friction coefficient.
 The run-out time, for example, is reduced by a factor of approximately 4 as
@@ -553,15 +549,13 @@ velocities are performed and the following conclusions are derived:
 
   \item A power-law dependence of the run-out distance and time as a 
     function of the input energy is observed. The power-law behaviour is found to 
-    be a generic feature of granular flow dynamics. 
-
-  \item The values of the power-law exponents are not simple functions of the 
-    geometry. 
+    be a generic feature of granular flow dynamics. The values of the power-law
+    exponents are not simple functions of the geometry. 
 
   \item Two regimes with different values of the exponents: 
     a low-energy regime and a high-energy regime are observed. 
 
-  \item The low energy regime reflects mainly the destabilisation of the pile, 
+  \item The low energy regime reflects mainly the destabilisation of the slope, 
     with a run-out time independent of the input energy.
 
   \item The second regime is governed by the spreading dynamics 
@@ -572,11 +566,11 @@ velocities are performed and the following conclusions are derived:
   \item The run-out distance and the decay time decrease as the friction 
     increases. This effect is much more pronounced at low values of friction.
 
-  \item  At low input energy, the distribution of kinetic energy in the system is 
+  \item  At low input energies, the distribution of kinetic energy in the system is 
     found have a significant effect on the run-out, as the energy is mostly 
     consumed in the destabilisation process. 
      
-  \item At higher input energy, where most of the energy is dissipated during 
+  \item At higher input energies, where most of the energy is dissipated during 
     the spreading phase, the run-out distance has a weak dependence on the 
     distribution of velocity in the granular mass. 
 
