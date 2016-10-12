@@ -1,4 +1,4 @@
-# Transient dynamics of granular piles: continuum v discrete modelling
+# Modelling transient dynamics of granular piles: MPM & DEM
 > Krishna Kumar, Kenichi Soga and Jean-Yves Delenne
 
 [![Build Status](https://api.travis-ci.org/kks32-docs/2017-mpm.svg)](https://travis-ci.org/kks32-docs/2017-mpm)
