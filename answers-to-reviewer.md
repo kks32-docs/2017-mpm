@@ -2,6 +2,19 @@
 
 The authors would like to thank for an insightful review. We have addressed the comments raised by the reviewer. 
 
+## Reviewer 1
+### Text in figures cannot be read. 
+
+The figures have been updated.
+
+### Define mean fraction
+
+Mean packing fraction is the fraction of solid mass in a given space. The definition has been added to the paper. 
+
+
+
+## Reviewer 2
+
 ### This is a clear well-written paper on the comparison between MPM and DEM simulation results on the motion of a granular slope. The title, however, suggests an analysis of the differences in the results from both approaches. Such discussion is hardly found in the current version.
 
 The paper title has been modified to reflect this: `Modelling of transient dynamics of granular slopes: MPM and DEM`.
